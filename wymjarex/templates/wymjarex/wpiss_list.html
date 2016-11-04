@@ -1,0 +1,102 @@
+{% extends 'wymjarex/base.html' %}
+{% block content %}
+{% load staticfiles %}
+<script>
+    var dataWeight = [
+        {% for wpis in wpisy %}
+            {% if wpis.weight != None %}
+            [Date.UTC(
+                {{wpis.created_date.year}}, 
+                ({{wpis.created_date.month}}-1), 
+                {{wpis.created_date.day}}), 
+                {{ wpis.weight }}
+            ],
+            {% endif %}
+        {% endfor %}
+    ]
+    var dataBelt = [
+        {% for wpis in wpisy %}
+            {% if wpis.belt != None %}
+                [Date.UTC(
+                    {{wpis.created_date.year}}, 
+                    ({{wpis.created_date.month}}-1), 
+                    {{wpis.created_date.day}}), 
+                    {{ wpis.belt }}
+                ],
+            {% endif %}
+        {% endfor %}
+    ]
+    var dataWaist = [
+        {% for wpis in wpisy %}
+            {% if wpis.waist != None %}
+                [Date.UTC(
+                    {{wpis.created_date.year }},
+                    ({{wpis.created_date.month}}-1), 
+                    {{wpis.created_date.day}}), 
+                    {{ wpis.waist }}
+                ],
+            {% endif %}
+        {% endfor %}
+    ]
+
+</script>
+<script src="{% static '/js/jquery-3.0.0.min.js' %}"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="{% static '/js/graph.js' %}"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div class = "container">
+    <br>
+    <br>
+    <h2>Wybierz widok:</h2>
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+            <a href="/last/7" role="button">
+                <button type="button" class="btn btn-primary">7 dni</button>
+            </a>
+        </div>
+        <div class="btn-group" role="group">
+            <a href="/last/14" role="button">
+                <button type="button" class="btn btn-primary">14 dni</button>
+            </a>
+        </div>
+        <div class="btn-group" role="group">
+            <a href="/last/30" role="button">
+                <button type="button" class="btn btn-primary">30 dni</button>
+            </a>
+        </div>
+        <div class="btn-group" role="group">
+            <a href="/" role="button"><button type="button" class="btn btn-primary">Wszystkie</button></a>
+        </div>
+    </div>
+
+        <h2>Wymiary:</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Waga</th>
+                    <th>Pas</th>
+                    <th>Talia</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for wpis in wpisy %}
+                <tr>
+                    <td><a href=" /wpis/{{wpis.id}}/edit/">{{wpis.created_date }}</a></td>
+                    <td>{{wpis.weight }}</td>
+                    <td>{{wpis.belt }}</td>
+                    <td>{{wpis.waist }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <!--
+                {% for wpis in wpisy %}
+                    <a href=" /wpis/{{wpis.id}}/edit/">{{wpis.created_date }}
+                      {{wpis.waist}}</a>  <br>
+                {% endfor %}
+-->
+    </div>
+{% endblock content %}

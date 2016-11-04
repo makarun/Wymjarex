@@ -1,0 +1,43 @@
+{% extends 'wymjarex/base.html' %}
+{% block content %}
+{% load staticfiles %}
+<script >
+	var dataWeight = [
+		{% for wpis in wpisy %}
+			[Date.UTC(
+				{{wpis.created_date.year}}, 
+				({{wpis.created_date.month}}-1), 
+				{{wpis.created_date.day}}), 
+				{{ wpis.weight }}
+			],
+		{% endfor %}
+	]
+	var dataBelt = [
+		{% for wpis in wpisy %}
+			[Date.UTC(
+				{{wpis.created_date.year}}, 
+				({{wpis.created_date.month}}-1), 
+				{{wpis.created_date.day}}), 
+				{{ wpis.belt }}
+			],
+		{% endfor %}
+	]
+	var dataWaist = [
+		{% for wpis in wpisy %}
+			[Date.UTC(
+				{{wpis.created_date.year }},
+				({{wpis.created_date.month}}-1), 
+				{{wpis.created_date.day}}), 
+				{{ wpis.waist }}
+			],
+		{% endfor %}
+	]
+
+</script>
+<script src="{% static '/js/jquery-3.0.0.min.js' %}"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="{% static '/js/graph.js' %}"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+{% endblock content %}
