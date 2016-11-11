@@ -1,9 +1,9 @@
 from django import forms
 
-from .models import Wpis
+from .models import Post
 
-class WpisForm(forms.ModelForm):
+class PostForm(forms.ModelForm):
 
     class Meta:
-        model = Wpis
+        model = Post
         fields = ('weight', 'belt', 'waist','created_date')

@@ -4,3 +4,7 @@ myvenv
 db.sqlite3
 .DS_Store
 poprawki.log
+.gitignore
+tems_data_przeróbka.json
+JuniorDev.log
+wymjarex.png

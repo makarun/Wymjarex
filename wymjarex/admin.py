@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import Wpis
+from .models import Post
 
-admin.site.register(Wpis)
+admin.site.register(Post)
