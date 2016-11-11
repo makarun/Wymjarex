@@ -1,13 +1,10 @@
 # wymjarex
----
+
 Chart display app writen with django and js library highcharts.com.
 
-To add more measurments edit wymjarex/models.py
-
 ###Requirements###
-*django-allauth
+* django-allauth
 
----
 ###Done###
 * filtering data by user
 * inplementing highchart
