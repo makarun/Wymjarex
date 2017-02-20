@@ -22,4 +22,6 @@ Chart display app writen with django and js library highcharts.com.
 * mass import 
 * choose date field
 * post remove
+* choose how many measurments to display
+* choose name for measurments
 
